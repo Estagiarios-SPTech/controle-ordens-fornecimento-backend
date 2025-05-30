@@ -4,20 +4,15 @@ import com.stefanini.controle_de_ofs.models.Employee;
 import com.stefanini.controle_de_ofs.models.Mensagem;
 import com.stefanini.controle_de_ofs.models.OrdemFornecimento;
 import com.stefanini.controle_de_ofs.models.User;
-import com.stefanini.controle_de_ofs.projection.OrdemFornecimentoProjection;
 import com.stefanini.controle_de_ofs.repository.RepositoryEmployee;
 import com.stefanini.controle_de_ofs.repository.RepositoryOrdemFornecimento;
 import com.stefanini.controle_de_ofs.repository.RepositoryUser;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.test.context.bean.override.mockito.MockitoBean;
-
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
@@ -25,19 +20,19 @@ import static org.mockito.Mockito.when;
 @SpringBootTest
 class OrdemFornecimentoServiceTest {
     @InjectMocks
-    OrdemFornecimentoService ordemFornecimentoService;
+    private OrdemFornecimentoService ordemFornecimentoService;
 
     @Mock
-    RepositoryOrdemFornecimento acao;
+    private RepositoryOrdemFornecimento acao;
 
     @Mock
-    RepositoryEmployee acaoEmployee;
+    private RepositoryEmployee acaoEmployee;
 
     @Mock
-    RepositoryUser acaoUser;
+    private RepositoryUser acaoUser;
 
     @Mock
-    Mensagem mensagem;
+    private Mensagem mensagem;
 
     @Test
     public void cadastrarComDescriptionVazio(){
