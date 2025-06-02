@@ -129,4 +129,59 @@ class ServiceEmployeeTest {
 
         assertEquals(new ResponseEntity<>(mensagem, HttpStatus.BAD_REQUEST), serviceEmployee.edit(employee));
     }
+
+    @Test
+    public void colaboradorComStatusNullParaEditar(){
+        Employee employee = new Employee();
+        employee.setId(1);
+        User colaborador = new User();
+        employee.setEmployee(colaborador);
+        when(action.findById(anyInt())).thenReturn(Optional.of(employee));
+
+        assertEquals(new ResponseEntity<>(mensagem, HttpStatus.BAD_REQUEST), serviceEmployee.edit(employee));
+    }
+
+    @Test
+    public void colaboradorComStatusVazioParaEditar(){
+        Employee employee = new Employee();
+        employee.setId(1);
+        User colaborador = new User();
+        employee.setEmployee(colaborador);
+        employee.setStatus("");
+        when(action.findById(anyInt())).thenReturn(Optional.of(employee));
+
+        assertEquals(new ResponseEntity<>(mensagem, HttpStatus.BAD_REQUEST), serviceEmployee.edit(employee));
+    }
+
+    @Test
+    public void colaboradorEditado(){
+        Employee employee = new Employee();
+        employee.setId(1);
+        User colaborador = new User();
+        employee.setEmployee(colaborador);
+        employee.setStatus("Pendente de Cadastro");
+        when(action.findById(anyInt())).thenReturn(Optional.of(employee));
+
+        assertEquals(new ResponseEntity<>(action.save(employee), HttpStatus.OK), serviceEmployee.edit(employee));
+    }
+
+    @Test
+    public void colaboradorNaoEncontradoParaDeletar(){
+        Employee employee = new Employee();
+        employee.setId(1);
+
+        when(action.existsById(anyInt())).thenReturn(false);
+
+        assertEquals(new ResponseEntity<>(mensagem, HttpStatus.NOT_FOUND), serviceEmployee.deleteById(anyInt()));
+    }
+
+    @Test
+    public void colaboradorDeletado(){
+        Employee employee = new Employee();
+        employee.setId(1);
+
+        when(action.existsById(anyInt())).thenReturn(true);
+
+        assertEquals(new ResponseEntity<>(HttpStatus.OK), serviceEmployee.deleteById(anyInt()));
+    }
 }
