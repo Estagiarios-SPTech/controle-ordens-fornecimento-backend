@@ -18,4 +18,13 @@ class UserTest {
         assertEquals("colaborador", testUser.getRole());
         assertEquals("senha123", testUser.getPassword());
     }
+
+    @Test
+    public void toStringTest(){
+        User testUser = new User(1, "Fulano", "fulano@gmail.com", "colaborador", "senha123");
+
+        String esperado = "User{id=1, name='Fulano', email='fulano@gmail.com', role='colaborador', password='senha123'}";
+
+        assertEquals(esperado, testUser.toString());
+    }
 }
