@@ -16,10 +16,6 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @CrossOrigin(origins = "*")
 public class EmployeeController {
-
-    @Autowired
-    private RepositoryEmployee action;
-
     @Autowired
     private ServiceEmployee serviceEmployee;
 

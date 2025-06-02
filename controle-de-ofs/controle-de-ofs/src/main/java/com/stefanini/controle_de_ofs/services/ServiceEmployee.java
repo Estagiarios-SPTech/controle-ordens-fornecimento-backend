@@ -4,7 +4,6 @@ import com.stefanini.controle_de_ofs.models.Employee;
 import com.stefanini.controle_de_ofs.models.Mensagem;
 import com.stefanini.controle_de_ofs.repository.RepositoryEmployee;
 import com.stefanini.controle_de_ofs.repository.RepositoryUser;
-import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,8 +12,6 @@ import java.util.List;
 
 @Service
 public class ServiceEmployee {
-
-    private String message;
 
     @Autowired
     private RepositoryEmployee action;
@@ -33,7 +30,7 @@ public class ServiceEmployee {
     public ResponseEntity<?> cadastrar(Employee obj) {
         if (obj.getEmployee() == null) {
             mensagem.setMessage("O colaborador precisa ser informado");
-            return new ResponseEntity<>(mensagem, HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(mensagem, HttpStatus.NO_CONTENT);
         } else if (obj.getStatus() == null || obj.getStatus().isEmpty()) {
             mensagem.setMessage("O status precisa ser preenchido");
             return new ResponseEntity<>(mensagem, HttpStatus.BAD_REQUEST);
