@@ -39,12 +39,6 @@ public class EmployeeController {
         return serviceEmployee.findByStatus(status);
     }
 
-    @Operation(summary = "Rota para adicionar novo funcionário")
-    @PostMapping("/new")
-    public ResponseEntity<?> newEmployee(@RequestBody Employee obj) {
-        return serviceEmployee.cadastrar(obj);
-    }
-
     @Operation(summary = "Rota para editar um funcionário existente")
     @PutMapping("/edit")
     public ResponseEntity<?> edit(@RequestBody Employee obj) {

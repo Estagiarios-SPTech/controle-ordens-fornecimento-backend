@@ -36,12 +36,6 @@ public class UserController {
         return serviceUser.findById(id);
     }
 
-    @Operation(summary = "Rota para adicionar usuários")
-    @PostMapping("/new")
-    public ResponseEntity<?> cadastrar(@RequestBody User obj){
-        return serviceUser.cadastrar(obj);
-    }
-
     @Operation(summary = "Rota para editar usuários")
     @PutMapping("/edit")
     public ResponseEntity<?> edit(@RequestBody User obj){
@@ -57,12 +51,12 @@ public class UserController {
     @Operation(summary = "Rota para encontrar todos os gerentes")
     @GetMapping("/Managers")
     public ResponseEntity<?> findManager(String role){
-        return serviceUser.findByRole("manager");
+        return serviceUser.findByRole("Gerente");
     }
 
     @Operation(summary = "Rota para encontrar todos os rts")
     @GetMapping("/RTs")
     public ResponseEntity<?> findRts(String role){
-        return serviceUser.findByRole("rt");
+        return serviceUser.findByRole("RT");
     }
 }

@@ -36,7 +36,9 @@ public class OrdemFornecimentoService {
         }
         else{
             User objUser = acaoUser.findByName(obj.getCollaborator().getEmployee().getName());
+            System.out.println(objUser);
             Employee objEmployee = acaoEmployee.findByEmployee(objUser);
+            System.out.println(objEmployee);
             obj.setCollaborator(objEmployee);
             obj.setCreated_at(LocalDate.now());
             return new ResponseEntity<>(acao.save(obj), HttpStatus.CREATED);

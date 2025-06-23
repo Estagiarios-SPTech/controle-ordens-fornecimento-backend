@@ -40,47 +40,6 @@ class ServiceEmployeeTest {
     }
 
     @Test
-    public void cadastrarEmployeeNull(){
-        Employee employee = new Employee();
-        employee.setEmployee(null);
-
-        assertEquals(new ResponseEntity<>(mensagem, HttpStatus.NO_CONTENT), serviceEmployee.cadastrar(employee));
-    }
-
-    @Test
-    public void cadastrarEmployeeStatusNull(){
-        User user = new User();
-        Employee employee = new Employee();
-        employee.setEmployee(user);
-        employee.setStatus(null);
-
-        assertEquals(new ResponseEntity<>(mensagem, HttpStatus.BAD_REQUEST), serviceEmployee.cadastrar(employee));
-    }
-
-    @Test
-    public void cadastrarEmployeeStatusVazio(){
-        User user = new User();
-        Employee employee = new Employee();
-        employee.setEmployee(user);
-        employee.setStatus("");
-
-        assertEquals(new ResponseEntity<>(mensagem, HttpStatus.BAD_REQUEST), serviceEmployee.cadastrar(employee));
-    }
-
-    @Test
-    public void cadastrarTest(){
-        User user = new User();
-        user.setName("Fabio");
-        Employee employee = new Employee();
-        employee.setStatus("Pendente de Cadastro");
-        employee.setEmployee(user);
-        employee.setRt(user);
-        employee.setManager(user);
-
-        assertEquals(new ResponseEntity<>(action.save(employee), HttpStatus.CREATED), serviceEmployee.cadastrar(employee));
-    }
-
-    @Test
     public void colaboradorNaoEncontrado(){
         when(action.existsById(anyInt())).thenReturn(false);
 

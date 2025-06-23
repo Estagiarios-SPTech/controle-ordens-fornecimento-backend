@@ -58,13 +58,6 @@ class EmployeeControllerTest {
     }
 
     @Test
-    public void newEmployeeTest() throws Exception {
-        when(serviceEmployee.cadastrar(any(Employee.class))).thenReturn(new ResponseEntity<>(HttpStatus.CREATED));
-
-        mockMvc.perform(post("/employees/new").contentType(MediaType.APPLICATION_JSON).content(objectMapper.writeValueAsString(employee))).andExpect(status().isCreated());
-    }
-
-    @Test
     public void editTest() throws Exception {
         mockMvc.perform(put("/employees/edit").contentType(MediaType.APPLICATION_JSON).content(objectMapper.writeValueAsString(employee))).andExpect(status().isOk());
     }

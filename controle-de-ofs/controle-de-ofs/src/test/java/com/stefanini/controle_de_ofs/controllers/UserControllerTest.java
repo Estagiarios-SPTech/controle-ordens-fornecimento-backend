@@ -64,16 +64,6 @@ class UserControllerTest {
     }
 
     @Test
-    public void cadastrarTest() throws Exception {
-        when(serviceUser.cadastrar(any(User.class))).thenReturn(new ResponseEntity<>(HttpStatus.CREATED));
-
-        mockMvc.perform(post("/users/new")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(user)))
-                .andExpect(status().isCreated());
-    }
-
-    @Test
     public void editTest() throws Exception {
 
         mockMvc.perform(put("/users/edit")

@@ -27,21 +27,6 @@ public class ServiceEmployee {
     }
 
 
-    public ResponseEntity<?> cadastrar(Employee obj) {
-        if (obj.getEmployee() == null) {
-            mensagem.setMessage("O colaborador precisa ser informado");
-            return new ResponseEntity<>(mensagem, HttpStatus.NO_CONTENT);
-        } else if (obj.getStatus() == null || obj.getStatus().isEmpty()) {
-            mensagem.setMessage("O status precisa ser preenchido");
-            return new ResponseEntity<>(mensagem, HttpStatus.BAD_REQUEST);
-        } else {
-            obj.setRt(actionUser.findSpecificRT(obj.getRt().getName()));
-            obj.setManager(actionUser.findSpecificManager(obj.getManager().getName()));
-            return new ResponseEntity<>(action.save(obj), HttpStatus.CREATED);
-        }
-    }
-
-
     public ResponseEntity<?> findById(int id) {
         if (!action.existsById(id)) {
             mensagem.setMessage("Colaborador não encontrado");

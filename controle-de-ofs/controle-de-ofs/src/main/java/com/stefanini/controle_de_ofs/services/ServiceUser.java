@@ -28,21 +28,6 @@ public class ServiceUser {
         return new ResponseEntity<>(action.findAll(), HttpStatus.OK);
     }
 
-    public ResponseEntity<?> cadastrar(User obj){
-        if(obj.getName().isEmpty()){
-            mensagem.setMessage("O nome precisa ser preenchido");
-            return new ResponseEntity<>(mensagem, HttpStatus.BAD_REQUEST);
-        } else if (obj.getEmail().isEmpty()) {
-            mensagem.setMessage("Informe um endereço de e-mail válido");
-            return new ResponseEntity<>(mensagem, HttpStatus.BAD_REQUEST);
-        } else if (obj.getRole().isEmpty()) {
-            mensagem.setMessage("Informe um cargo válido");
-            return new ResponseEntity<>(mensagem, HttpStatus.BAD_REQUEST);
-        } else {
-            return new ResponseEntity<>(action.save(obj), HttpStatus.CREATED);
-        }
-    }
-
     public ResponseEntity<?> findById(int  id){
         if (action.countById(id) == 0){
             mensagem.setMessage("Usuário não encontrado");

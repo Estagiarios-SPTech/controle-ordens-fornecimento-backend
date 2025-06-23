@@ -69,42 +69,6 @@ class ServiceUserTest {
     }
 
     @Test
-    void cadastrarSucesso() {
-        when(action.save(any(User.class))).thenReturn(user);
-
-        ResponseEntity<?> response = serviceUser.cadastrar(user);
-
-        assertEquals(HttpStatus.CREATED, response.getStatusCode());
-    }
-
-    @Test
-    void cadastrarSemNome() {
-        user.setName("");
-
-        ResponseEntity<?> response = serviceUser.cadastrar(user);
-
-        assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
-    }
-
-    @Test
-    void cadastrarSemEmail() {
-        user.setEmail("");
-
-        ResponseEntity<?> response = serviceUser.cadastrar(user);
-
-        assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
-    }
-
-    @Test
-    void cadastrarSemRole() {
-        user.setRole("");
-
-        ResponseEntity<?> response = serviceUser.cadastrar(user);
-
-        assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
-    }
-
-    @Test
     void findByIdSucesso() {
         when(action.countById(1)).thenReturn(1);
         when(action.findById(1)).thenReturn(userList);
