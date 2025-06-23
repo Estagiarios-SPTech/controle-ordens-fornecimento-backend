@@ -13,25 +13,25 @@ public interface RepositoryUser extends CrudRepository<User, Integer> {
 
     List<User> findAll();
 
-//    @Query(value = "SELECT id, nome FROM users WHERE id = :id", nativeQuery = true)
+//    @Query(value = "SELECT id, nome FROM user WHERE id = :id", nativeQuery = true)
     List <User> findById(int id);
 
     int countById(int codigo);
 
-    @Query(value = "select name from users where role = 'colaborador'", nativeQuery = true)
+    @Query(value = "select name from user where role = 'Colaborador'", nativeQuery = true)
     List<String> findAllName();
 
     User findByName(String name);
 
     List <User> findByRole(String role);
 
-    @Query(value = "SELECT id, name, email, role FROM users WHERE role = 'manager'", nativeQuery = true)
+    @Query(value = "SELECT id, name, email, role FROM user WHERE role = 'Gerente'", nativeQuery = true)
     List <User> findManagers();
 
-    @Query(value = "SELECT id, name, email, role FROM users WHERE role = 'manager' AND name = :name", nativeQuery = true)
+    @Query(value = "SELECT id, name, email, role FROM user WHERE role = 'Gerente' AND name = :name", nativeQuery = true)
     User findSpecificManager(String name);
 
-    @Query(value = "SELECT id, name, email, role FROM users WHERE role = 'RT' AND name = :name", nativeQuery = true)
+    @Query(value = "SELECT id, name, email, role FROM user WHERE role = 'RT' AND name = :name", nativeQuery = true)
     User findSpecificRT(String name);
 }
 

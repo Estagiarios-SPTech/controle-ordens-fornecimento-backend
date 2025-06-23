@@ -51,7 +51,7 @@ public class ServiceEmployee {
         if (action.findById(obj.getId()).isEmpty()) {
             mensagem.setMessage("ID do colaborador não encontrado");
             return new ResponseEntity<>(mensagem, HttpStatus.NOT_FOUND);
-        } else if (obj.getEmployee() == null) {
+        } else if (obj.getUser() == null) {
             mensagem.setMessage("O colaborador precisa ser informado");
             return new ResponseEntity<>(mensagem, HttpStatus.BAD_REQUEST);
         } else if (obj.getStatus() == null || obj.getStatus().isEmpty()) {

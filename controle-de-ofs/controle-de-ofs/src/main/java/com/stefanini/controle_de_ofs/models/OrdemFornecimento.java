@@ -17,6 +17,6 @@ public class OrdemFornecimento {
     private LocalDate updated_at;
 
     @ManyToOne
-    @JoinColumn(referencedColumnName = "id")
-    private Employee collaborator;
+    @JoinColumn(name = "employee", referencedColumnName = "id")
+    private Employee employee;
 }

@@ -5,22 +5,21 @@ import lombok.Data;
 
 @Entity
 @Data
-@Table(name = "employees")
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @OneToOne
-    @JoinColumn(name = "userRoleEmployee", referencedColumnName = "id")
-    private User employee;
+    @JoinColumn(name = "user", referencedColumnName = "id")
+    private User user;
 
     @ManyToOne
-    @JoinColumn(name = "userRoleRT", referencedColumnName = "id")
+    @JoinColumn(name = "rt", referencedColumnName = "id")
     private User rt;
 
     @ManyToOne
-    @JoinColumn(name = "userRoleManager", referencedColumnName = "id")
+    @JoinColumn(name = "manager", referencedColumnName = "id")
     private User manager;
 
     private String status;

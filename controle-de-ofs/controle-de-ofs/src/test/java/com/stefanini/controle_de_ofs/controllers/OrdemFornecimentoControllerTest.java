@@ -41,10 +41,10 @@ class OrdemFornecimentoControllerTest {
         Employee employee = new Employee();
         User user = new User();
         user.setName("Fabio");
-        employee.setEmployee(user);
+        employee.setUser(user);
         ordemFornecimento.setDescription("test");
         ordemFornecimento.setStatus("test");
-        ordemFornecimento.setCollaborator(employee);
+        ordemFornecimento.setEmployee(employee);
     }
 
     @Test

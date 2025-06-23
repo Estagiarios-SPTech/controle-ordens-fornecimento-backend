@@ -8,5 +8,5 @@ public interface OrdemFornecimentoProjection {
     String getStatus();
     LocalDate getCreated_at();
     LocalDate getUpdated_at();
-    String getCollaborator();
+    String getEmployee();
 }

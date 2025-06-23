@@ -40,10 +40,10 @@ class OrdemFornecimentoServiceTest {
         Employee employee = new Employee();
         User user = new User();
         user.setName("Fabio");
-        employee.setEmployee(user);
+        employee.setUser(user);
         ordemFornecimento.setDescription("");
         ordemFornecimento.setStatus("Pendente de Cadastramento");
-        ordemFornecimento.setCollaborator(employee);
+        ordemFornecimento.setEmployee(employee);
 
         ResponseEntity resposta = ordemFornecimentoService.cadastrar(ordemFornecimento);
 
@@ -56,10 +56,10 @@ class OrdemFornecimentoServiceTest {
         Employee employee = new Employee();
         User user = new User();
         user.setName("Fabio");
-        employee.setEmployee(user);
+        employee.setUser(user);
         ordemFornecimento.setDescription("Manutenção");
         ordemFornecimento.setStatus("");
-        ordemFornecimento.setCollaborator(employee);
+        ordemFornecimento.setEmployee(employee);
 
         ResponseEntity resposta = ordemFornecimentoService.cadastrar(ordemFornecimento);
 
@@ -72,10 +72,10 @@ class OrdemFornecimentoServiceTest {
         Employee employee = new Employee();
         User user = new User();
         user.setName("Fabio");
-        employee.setEmployee(user);
+        employee.setUser(user);
         ordemFornecimento.setDescription("Manutenção");
         ordemFornecimento.setStatus("Pendente de Cadastramento");
-        ordemFornecimento.setCollaborator(employee);
+        ordemFornecimento.setEmployee(employee);
 
         when(acao.save(ordemFornecimento)).thenReturn(ordemFornecimento);
         ResponseEntity resposta = ordemFornecimentoService.cadastrar(ordemFornecimento);
@@ -129,10 +129,10 @@ class OrdemFornecimentoServiceTest {
         Employee employee = new Employee();
         User user = new User();
         user.setName("Fabio");
-        employee.setEmployee(user);
+        employee.setUser(user);
         ordemFornecimento.setDescription("Manutenção");
         ordemFornecimento.setStatus("Pendente de Cadastramento");
-        ordemFornecimento.setCollaborator(employee);
+        ordemFornecimento.setEmployee(employee);
 
         when(acao.countByCodigo(ordemFornecimento.getCodigo())).thenReturn(0);
 
@@ -148,10 +148,10 @@ class OrdemFornecimentoServiceTest {
         Employee employee = new Employee();
         User user = new User();
         user.setName("Fabio");
-        employee.setEmployee(user);
+        employee.setUser(user);
         ordemFornecimento.setDescription("");
         ordemFornecimento.setStatus("Pendente de Cadastramento");
-        ordemFornecimento.setCollaborator(employee);
+        ordemFornecimento.setEmployee(employee);
 
         when(acao.countByCodigo(ordemFornecimento.getCodigo())).thenReturn(1);
 
@@ -167,10 +167,10 @@ class OrdemFornecimentoServiceTest {
         Employee employee = new Employee();
         User user = new User();
         user.setName("Fabio");
-        employee.setEmployee(user);
+        employee.setUser(user);
         ordemFornecimento.setDescription("Manutenção");
         ordemFornecimento.setStatus("");
-        ordemFornecimento.setCollaborator(employee);
+        ordemFornecimento.setEmployee(employee);
 
         when(acao.countByCodigo(ordemFornecimento.getCodigo())).thenReturn(1);
 
@@ -186,10 +186,10 @@ class OrdemFornecimentoServiceTest {
         Employee employee = new Employee();
         User user = new User();
         user.setName("Fabio");
-        employee.setEmployee(user);
+        employee.setUser(user);
         ordemFornecimento.setDescription("Manutenção");
         ordemFornecimento.setStatus("Pendente de Cadastramento");
-        ordemFornecimento.setCollaborator(employee);
+        ordemFornecimento.setEmployee(employee);
 
         when(acao.countByCodigo(ordemFornecimento.getCodigo())).thenReturn(1);
         when(acao.findByCodigo(ordemFornecimento.getCodigo())).thenReturn(ordemFornecimento);

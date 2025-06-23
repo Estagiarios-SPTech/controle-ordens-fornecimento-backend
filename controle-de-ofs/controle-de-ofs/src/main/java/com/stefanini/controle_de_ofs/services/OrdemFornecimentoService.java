@@ -35,11 +35,11 @@ public class OrdemFornecimentoService {
             return new ResponseEntity<>(mensagem, HttpStatus.BAD_REQUEST);
         }
         else{
-            User objUser = acaoUser.findByName(obj.getCollaborator().getEmployee().getName());
+            User objUser = acaoUser.findByName(obj.getEmployee().getUser().getName());
             System.out.println(objUser);
-            Employee objEmployee = acaoEmployee.findByEmployee(objUser);
+            Employee objEmployee = acaoEmployee.findByUser(objUser);
             System.out.println(objEmployee);
-            obj.setCollaborator(objEmployee);
+            obj.setEmployee(objEmployee);
             obj.setCreated_at(LocalDate.now());
             return new ResponseEntity<>(acao.save(obj), HttpStatus.CREATED);
         }
@@ -79,11 +79,11 @@ public class OrdemFornecimentoService {
         }
         else{
             //Procura o objeto usuario relacionado
-            User objUser = acaoUser.findByName(obj.getCollaborator().getEmployee().getName());
+            User objUser = acaoUser.findByName(obj.getEmployee().getUser().getName());
             //Coloca em Employee
-            Employee objEmployee = acaoEmployee.findByEmployee(objUser);
+            Employee objEmployee = acaoEmployee.findByUser(objUser);
             //Coloca em OrdemFornecimento
-            obj.setCollaborator(objEmployee);
+            obj.setEmployee(objEmployee);
             //Procura o obj OrdemFornecimento com base no codigo
             OrdemFornecimento objEncontrado = acao.findByCodigo(obj.getCodigo());
             //Pega a data que foi criada para impedir alterações

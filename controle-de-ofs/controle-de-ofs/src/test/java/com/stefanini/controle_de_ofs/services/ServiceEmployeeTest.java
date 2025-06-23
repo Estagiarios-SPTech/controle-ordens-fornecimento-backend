@@ -94,7 +94,7 @@ class ServiceEmployeeTest {
         Employee employee = new Employee();
         employee.setId(1);
         User colaborador = new User();
-        employee.setEmployee(colaborador);
+        employee.setUser(colaborador);
         when(action.findById(anyInt())).thenReturn(Optional.of(employee));
 
         assertEquals(new ResponseEntity<>(mensagem, HttpStatus.BAD_REQUEST), serviceEmployee.edit(employee));
@@ -105,7 +105,7 @@ class ServiceEmployeeTest {
         Employee employee = new Employee();
         employee.setId(1);
         User colaborador = new User();
-        employee.setEmployee(colaborador);
+        employee.setUser(colaborador);
         employee.setStatus("");
         when(action.findById(anyInt())).thenReturn(Optional.of(employee));
 
@@ -117,7 +117,7 @@ class ServiceEmployeeTest {
         Employee employee = new Employee();
         employee.setId(1);
         User colaborador = new User();
-        employee.setEmployee(colaborador);
+        employee.setUser(colaborador);
         employee.setStatus("Pendente de Cadastro");
         when(action.findById(anyInt())).thenReturn(Optional.of(employee));
 
