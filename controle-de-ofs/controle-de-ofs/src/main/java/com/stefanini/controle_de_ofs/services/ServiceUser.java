@@ -20,8 +20,8 @@ public class ServiceUser {
     @Autowired
     private Mensagem mensagem;
 
-    public List<String> listarNomes(){
-        return action.findAllName();
+    public List<String> listarEmails(){
+        return action.findAllEmail();
     }
 
     public ResponseEntity<?> findAll(){
@@ -47,10 +47,7 @@ public class ServiceUser {
     }
 
     public ResponseEntity<?> edit(User obj){
-        if (action.countById(obj.getId()) == 0){
-            mensagem.setMessage("ID do Usuário não encontrado");
-            return new ResponseEntity<>(mensagem, HttpStatus.NOT_FOUND);
-        } else if(obj.getName().isEmpty()){
+        if(obj.getName().isEmpty()){
             mensagem.setMessage("O nome precisa ser preenchido");
             return new ResponseEntity<>(mensagem, HttpStatus.BAD_REQUEST);
         } else if (obj.getEmail().isEmpty()) {

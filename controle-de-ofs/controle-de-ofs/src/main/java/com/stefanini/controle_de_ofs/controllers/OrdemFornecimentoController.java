@@ -28,9 +28,9 @@ public class OrdemFornecimentoController {
     }
 
     @Operation(summary = "Listagem")
-    @GetMapping("/listar")
-    public ResponseEntity<?> listarTudo(){
-        return ordemFornecimentoService.listarTudo();
+    @GetMapping("/listar/{rt}")
+    public ResponseEntity<?> listarTudo(@PathVariable Integer rt){
+        return ordemFornecimentoService.listarTudo(rt);
     }
 
     @Operation(summary = "Listagem por código")

@@ -45,7 +45,7 @@ class UserControllerTest {
     @Test
     public void listarNomesTest() throws Exception {
         List<String> nomes = Arrays.asList("User 1", "User 2", "User 3");
-        when(serviceUser.listarNomes()).thenReturn(nomes);
+        when(serviceUser.listarEmails()).thenReturn(nomes);
         mockMvc.perform(get("/users/listarNomes"))
                 .andExpect(status().isOk());
     }

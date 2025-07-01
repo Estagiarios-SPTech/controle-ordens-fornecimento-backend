@@ -51,9 +51,9 @@ class ServiceUserTest {
     @Test
     void listarNomes() {
         List<String> nomes = Arrays.asList("User 1", "User 2", "User 3");
-        when(action.findAllName()).thenReturn(nomes);
+        when(action.findAllEmail()).thenReturn(nomes);
 
-        List<String> resultado = serviceUser.listarNomes();
+        List<String> resultado = serviceUser.listarEmails();
 
         assertEquals(nomes, resultado);
     }

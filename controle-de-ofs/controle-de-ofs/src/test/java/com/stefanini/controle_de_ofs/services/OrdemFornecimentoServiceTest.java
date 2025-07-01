@@ -85,9 +85,9 @@ class OrdemFornecimentoServiceTest {
 
     @Test
     public void listarTudoTest(){
-        ResponseEntity resposta = ordemFornecimentoService.listarTudo();
+        ResponseEntity resposta = ordemFornecimentoService.listarTudo(2);
 
-        assertEquals(new ResponseEntity<>(acao.acharTudoSemMandarObjetoChaveEstrangeira(),HttpStatus.OK), resposta);
+        assertEquals(new ResponseEntity<>(acao.acharTudoSemMandarObjetoChaveEstrangeira(2),HttpStatus.OK), resposta);
     }
 
     @Test

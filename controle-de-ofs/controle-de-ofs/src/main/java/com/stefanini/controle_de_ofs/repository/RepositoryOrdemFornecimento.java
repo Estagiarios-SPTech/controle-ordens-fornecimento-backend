@@ -10,8 +10,8 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 
 public interface RepositoryOrdemFornecimento extends CrudRepository<OrdemFornecimento, Integer>{
-    @Query(value = "select codigo, description, ordem_fornecimento.status, created_at, updated_at, name as collaborator from ordem_fornecimento join employee on employee.id = employee join user on user.id = employee.user", nativeQuery = true)
-    List<OrdemFornecimentoProjection> acharTudoSemMandarObjetoChaveEstrangeira();
+    @Query(value = "select codigo, description, ordem_fornecimento.status, created_at, updated_at, email as employee from ordem_fornecimento join employee on employee.id = employee join user on user.id = employee.user where rt = :rt", nativeQuery = true)
+    List<OrdemFornecimentoProjection> acharTudoSemMandarObjetoChaveEstrangeira(Integer rt);
     OrdemFornecimento findByCodigo(Integer codigo);
     OrdemFornecimento findByEmployee(Employee obj);
     Integer countByCodigo(Integer codigo);

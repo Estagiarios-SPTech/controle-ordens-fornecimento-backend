@@ -19,9 +19,9 @@ public class UserController {
     @Autowired
     private ServiceUser serviceUser;
 
-    @GetMapping("/listarNomes")
-    public List<String> listarNomes(){
-        return serviceUser.listarNomes();
+    @GetMapping("/listarEmails")
+    public List<String> listarEmails(){
+        return serviceUser.listarEmails();
     }
 
     @Operation(summary = "Rota para listar todos os usuários")

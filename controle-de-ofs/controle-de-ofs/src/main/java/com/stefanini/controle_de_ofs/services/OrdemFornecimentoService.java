@@ -4,6 +4,7 @@ import com.stefanini.controle_de_ofs.models.Employee;
 import com.stefanini.controle_de_ofs.models.Mensagem;
 import com.stefanini.controle_de_ofs.models.OrdemFornecimento;
 import com.stefanini.controle_de_ofs.models.User;
+import com.stefanini.controle_de_ofs.projection.OrdemFornecimentoProjection;
 import com.stefanini.controle_de_ofs.repository.RepositoryEmployee;
 import com.stefanini.controle_de_ofs.repository.RepositoryOrdemFornecimento;
 import com.stefanini.controle_de_ofs.repository.RepositoryUser;
@@ -13,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Service
 public class OrdemFornecimentoService {
@@ -35,18 +37,16 @@ public class OrdemFornecimentoService {
             return new ResponseEntity<>(mensagem, HttpStatus.BAD_REQUEST);
         }
         else{
-            User objUser = acaoUser.findByName(obj.getEmployee().getUser().getName());
-            System.out.println(objUser);
+            User objUser = acaoUser.findByEmail(obj.getEmployee().getUser().getEmail());
             Employee objEmployee = acaoEmployee.findByUser(objUser);
-            System.out.println(objEmployee);
             obj.setEmployee(objEmployee);
             obj.setCreated_at(LocalDate.now());
             return new ResponseEntity<>(acao.save(obj), HttpStatus.CREATED);
         }
     }
 
-    public ResponseEntity<?> listarTudo(){
-        return new ResponseEntity<>(acao.acharTudoSemMandarObjetoChaveEstrangeira(), HttpStatus.OK);
+    public ResponseEntity<?> listarTudo(Integer rt){
+        return new ResponseEntity<>(acao.acharTudoSemMandarObjetoChaveEstrangeira(rt), HttpStatus.OK);
     }
 
     public ResponseEntity<?> ContarPorStatus(String status){
@@ -79,7 +79,7 @@ public class OrdemFornecimentoService {
         }
         else{
             //Procura o objeto usuario relacionado
-            User objUser = acaoUser.findByName(obj.getEmployee().getUser().getName());
+            User objUser = acaoUser.findByEmail(obj.getEmployee().getUser().getEmail());
             //Coloca em Employee
             Employee objEmployee = acaoEmployee.findByUser(objUser);
             //Coloca em OrdemFornecimento

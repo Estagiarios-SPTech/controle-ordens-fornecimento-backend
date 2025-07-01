@@ -18,10 +18,10 @@ public interface RepositoryUser extends CrudRepository<User, Integer> {
 
     int countById(int codigo);
 
-    @Query(value = "select name from user where role = 'Colaborador'", nativeQuery = true)
-    List<String> findAllName();
+    @Query(value = "select email from user where role = 'Colaborador'", nativeQuery = true)
+    List<String> findAllEmail();
 
-    User findByName(String name);
+    User findByEmail(String email);
 
     List <User> findByRole(String role);
 
