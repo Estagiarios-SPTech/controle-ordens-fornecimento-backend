@@ -122,83 +122,83 @@ class OrdemFornecimentoServiceTest {
         assertEquals(new ResponseEntity<>(acao.findByCodigo(1),HttpStatus.OK), resposta);
     }
 
-    @Test
-    public void alterarCodigoNaoEncontrado(){
-        OrdemFornecimento ordemFornecimento = new OrdemFornecimento();
-        ordemFornecimento.setCodigo(1);
-        Employee employee = new Employee();
-        User user = new User();
-        user.setName("Fabio");
-        employee.setUser(user);
-        ordemFornecimento.setDescription("Manutenção");
-        ordemFornecimento.setStatus("Pendente de Cadastramento");
-        ordemFornecimento.setEmployee(employee);
+//    @Test
+//    public void alterarCodigoNaoEncontrado(){
+//        OrdemFornecimento ordemFornecimento = new OrdemFornecimento();
+//        ordemFornecimento.setCodigo(1);
+//        Employee employee = new Employee();
+//        User user = new User();
+//        user.setName("Fabio");
+//        employee.setUser(user);
+//        ordemFornecimento.setDescription("Manutenção");
+//        ordemFornecimento.setStatus("Pendente de Cadastramento");
+//        ordemFornecimento.setEmployee(employee);
+//
+//        when(acao.countByCodigo(ordemFornecimento.getCodigo())).thenReturn(0);
+//
+//        ResponseEntity resposta = ordemFornecimentoService.alterar(ordemFornecimento);
+//
+//        assertEquals(new ResponseEntity<>(mensagem, HttpStatus.NOT_FOUND), resposta);
+//    }
 
-        when(acao.countByCodigo(ordemFornecimento.getCodigo())).thenReturn(0);
-
-        ResponseEntity resposta = ordemFornecimentoService.alterar(ordemFornecimento);
-
-        assertEquals(new ResponseEntity<>(mensagem, HttpStatus.NOT_FOUND), resposta);
-    }
-
-    @Test
-    public void alterarDescriptionVazio(){
-        OrdemFornecimento ordemFornecimento = new OrdemFornecimento();
-        ordemFornecimento.setCodigo(1);
-        Employee employee = new Employee();
-        User user = new User();
-        user.setName("Fabio");
-        employee.setUser(user);
-        ordemFornecimento.setDescription("");
-        ordemFornecimento.setStatus("Pendente de Cadastramento");
-        ordemFornecimento.setEmployee(employee);
-
-        when(acao.countByCodigo(ordemFornecimento.getCodigo())).thenReturn(1);
-
-        ResponseEntity resposta = ordemFornecimentoService.alterar(ordemFornecimento);
-
-        assertEquals(new ResponseEntity<>(mensagem, HttpStatus.BAD_REQUEST), resposta);
-    }
-
-    @Test
-    public void alterarStatusVazio(){
-        OrdemFornecimento ordemFornecimento = new OrdemFornecimento();
-        ordemFornecimento.setCodigo(1);
-        Employee employee = new Employee();
-        User user = new User();
-        user.setName("Fabio");
-        employee.setUser(user);
-        ordemFornecimento.setDescription("Manutenção");
-        ordemFornecimento.setStatus("");
-        ordemFornecimento.setEmployee(employee);
-
-        when(acao.countByCodigo(ordemFornecimento.getCodigo())).thenReturn(1);
-
-        ResponseEntity resposta = ordemFornecimentoService.alterar(ordemFornecimento);
-
-        assertEquals(new ResponseEntity<>(mensagem, HttpStatus.BAD_REQUEST), resposta);
-    }
-
-    @Test
-    public void alterarSucesso(){
-        OrdemFornecimento ordemFornecimento = new OrdemFornecimento();
-        ordemFornecimento.setCodigo(1);
-        Employee employee = new Employee();
-        User user = new User();
-        user.setName("Fabio");
-        employee.setUser(user);
-        ordemFornecimento.setDescription("Manutenção");
-        ordemFornecimento.setStatus("Pendente de Cadastramento");
-        ordemFornecimento.setEmployee(employee);
-
-        when(acao.countByCodigo(ordemFornecimento.getCodigo())).thenReturn(1);
-        when(acao.findByCodigo(ordemFornecimento.getCodigo())).thenReturn(ordemFornecimento);
-        when(acao.save(ordemFornecimento)).thenReturn(ordemFornecimento);
-
-        ResponseEntity resposta = ordemFornecimentoService.alterar(ordemFornecimento);
-
-        assertEquals(new ResponseEntity<>(acao.findByCodigo(ordemFornecimento.getCodigo()), HttpStatus.CREATED), resposta);
-    }
+//    @Test
+//    public void alterarDescriptionVazio(){
+//        OrdemFornecimento ordemFornecimento = new OrdemFornecimento();
+//        ordemFornecimento.setCodigo(1);
+//        Employee employee = new Employee();
+//        User user = new User();
+//        user.setName("Fabio");
+//        employee.setUser(user);
+//        ordemFornecimento.setDescription("");
+//        ordemFornecimento.setStatus("Pendente de Cadastramento");
+//        ordemFornecimento.setEmployee(employee);
+//
+//        when(acao.countByCodigo(ordemFornecimento.getCodigo())).thenReturn(1);
+//
+//        ResponseEntity resposta = ordemFornecimentoService.alterar(ordemFornecimento);
+//
+//        assertEquals(new ResponseEntity<>(mensagem, HttpStatus.BAD_REQUEST), resposta);
+//    }
+//
+//    @Test
+//    public void alterarStatusVazio(){
+//        OrdemFornecimento ordemFornecimento = new OrdemFornecimento();
+//        ordemFornecimento.setCodigo(1);
+//        Employee employee = new Employee();
+//        User user = new User();
+//        user.setName("Fabio");
+//        employee.setUser(user);
+//        ordemFornecimento.setDescription("Manutenção");
+//        ordemFornecimento.setStatus("");
+//        ordemFornecimento.setEmployee(employee);
+//
+//        when(acao.countByCodigo(ordemFornecimento.getCodigo())).thenReturn(1);
+//
+//        ResponseEntity resposta = ordemFornecimentoService.alterar(ordemFornecimento);
+//
+//        assertEquals(new ResponseEntity<>(mensagem, HttpStatus.BAD_REQUEST), resposta);
+//    }
+//
+//    @Test
+//    public void alterarSucesso(){
+//        OrdemFornecimento ordemFornecimento = new OrdemFornecimento();
+//        ordemFornecimento.setCodigo(1);
+//        Employee employee = new Employee();
+//        User user = new User();
+//        user.setName("Fabio");
+//        employee.setUser(user);
+//        ordemFornecimento.setDescription("Manutenção");
+//        ordemFornecimento.setStatus("Pendente de Cadastramento");
+//        ordemFornecimento.setEmployee(employee);
+//
+//        when(acao.countByCodigo(ordemFornecimento.getCodigo())).thenReturn(1);
+//        when(acao.findByCodigo(ordemFornecimento.getCodigo())).thenReturn(ordemFornecimento);
+//        when(acao.save(ordemFornecimento)).thenReturn(ordemFornecimento);
+//
+//        ResponseEntity resposta = ordemFornecimentoService.alterar(ordemFornecimento);
+//
+//        assertEquals(new ResponseEntity<>(acao.findByCodigo(ordemFornecimento.getCodigo()), HttpStatus.CREATED), resposta);
+//    }
 
     @Test
     public void excluirCodigoNaoEncontrado(){

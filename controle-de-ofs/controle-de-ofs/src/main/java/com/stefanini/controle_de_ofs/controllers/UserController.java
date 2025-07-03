@@ -19,9 +19,9 @@ public class UserController {
     @Autowired
     private ServiceUser serviceUser;
 
-    @GetMapping("/listarEmails")
-    public List<String> listarEmails(){
-        return serviceUser.listarEmails();
+    @GetMapping("/Colaboradores")
+    public ResponseEntity<?> listarColaboradores(){
+        return serviceUser.findByRole("Colaborador");
     }
 
     @Operation(summary = "Rota para listar todos os usuários")
@@ -42,11 +42,11 @@ public class UserController {
         return serviceUser.edit(obj);
     }
 
-    @Operation(summary = "Rota para deletar usuários")
-    @DeleteMapping("/delete/{id}")
-    public ResponseEntity<?> deleteByID(@PathVariable int id){
-        return serviceUser.deleteById(id);
-  }
+//    @Operation(summary = "Rota para deletar usuários")
+//    @DeleteMapping("/delete/{id}")
+//    public ResponseEntity<?> deleteByID(@PathVariable int id){
+//        return serviceUser.deleteById(id);
+//  }
 
     @Operation(summary = "Rota para encontrar todos os gerentes")
     @GetMapping("/Managers")

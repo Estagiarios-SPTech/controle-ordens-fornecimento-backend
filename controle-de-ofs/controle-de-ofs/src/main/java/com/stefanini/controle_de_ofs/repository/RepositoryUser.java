@@ -7,21 +7,14 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface RepositoryUser extends CrudRepository<User, Integer> {
 
     List<User> findAll();
 
-//    @Query(value = "SELECT id, nome FROM user WHERE id = :id", nativeQuery = true)
-    List <User> findById(int id);
-
     int countById(int codigo);
-
-    @Query(value = "select email from user where role = 'Colaborador'", nativeQuery = true)
-    List<String> findAllEmail();
-
-    User findByEmail(String email);
 
     List <User> findByRole(String role);
 

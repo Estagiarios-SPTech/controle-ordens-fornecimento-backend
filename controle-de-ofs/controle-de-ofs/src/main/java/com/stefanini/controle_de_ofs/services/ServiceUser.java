@@ -20,10 +20,6 @@ public class ServiceUser {
     @Autowired
     private Mensagem mensagem;
 
-    public List<String> listarEmails(){
-        return action.findAllEmail();
-    }
-
     public ResponseEntity<?> findAll(){
         return new ResponseEntity<>(action.findAll(), HttpStatus.OK);
     }
@@ -61,21 +57,16 @@ public class ServiceUser {
         }
     }
 
-    public ResponseEntity<?> deleteById(int id) {
-        if (action.countById(id) == 0) {
-            mensagem.setMessage("Usuário não encontrado");
-            return new ResponseEntity<>(mensagem, HttpStatus.NOT_FOUND);
-        } else {
-            List<User> obj = action.findById(id);
-            if (!obj.isEmpty()) {
-                User user = obj.get(0);;
-                action.delete(user);
-                return new ResponseEntity<>(HttpStatus.OK);
-            } else {
-                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-            }
-        }
-    }
+//    public ResponseEntity<?> deleteById(int id) {
+//        if (action.countById(id) == 0) {
+//            mensagem.setMessage("Usuário não encontrado");
+//            return new ResponseEntity<>(mensagem, HttpStatus.NOT_FOUND);
+//        } else {
+//            User user = action.findByCodigo(id);
+//            action.delete(user);
+//            return new ResponseEntity<>(HttpStatus.OK);
+//        }
+//    }
 
     public ResponseEntity<?> findAllManagers(){
         if (action.findManagers().isEmpty()){
