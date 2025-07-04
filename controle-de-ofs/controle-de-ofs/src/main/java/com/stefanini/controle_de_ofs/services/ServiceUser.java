@@ -29,7 +29,7 @@ public class ServiceUser {
             mensagem.setMessage("Usuário não encontrado");
             return new ResponseEntity<>(mensagem, HttpStatus.NOT_FOUND);
         } else {
-            return new ResponseEntity<>(action.findById(id), HttpStatus.OK);
+            return new ResponseEntity<>(action.findById(id).get(), HttpStatus.OK);
         }
     }
 
@@ -43,7 +43,11 @@ public class ServiceUser {
     }
 
     public ResponseEntity<?> edit(User obj){
-        if(obj.getName().isEmpty()){
+        if (action.countById(obj.getId()) == 0) {
+            mensagem.setMessage("ID do Usuário não encontrado");
+            return new ResponseEntity<>(mensagem, HttpStatus.NOT_FOUND);
+        }
+        else if(obj.getName().isEmpty()){
             mensagem.setMessage("O nome precisa ser preenchido");
             return new ResponseEntity<>(mensagem, HttpStatus.BAD_REQUEST);
         } else if (obj.getEmail().isEmpty()) {
@@ -56,17 +60,6 @@ public class ServiceUser {
             return new ResponseEntity<>(action.save(obj), HttpStatus.OK);
         }
     }
-
-//    public ResponseEntity<?> deleteById(int id) {
-//        if (action.countById(id) == 0) {
-//            mensagem.setMessage("Usuário não encontrado");
-//            return new ResponseEntity<>(mensagem, HttpStatus.NOT_FOUND);
-//        } else {
-//            User user = action.findByCodigo(id);
-//            action.delete(user);
-//            return new ResponseEntity<>(HttpStatus.OK);
-//        }
-//    }
 
     public ResponseEntity<?> findAllManagers(){
         if (action.findManagers().isEmpty()){

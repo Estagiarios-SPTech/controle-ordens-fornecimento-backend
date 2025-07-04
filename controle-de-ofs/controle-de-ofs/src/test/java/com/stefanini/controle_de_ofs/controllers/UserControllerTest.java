@@ -43,14 +43,6 @@ class UserControllerTest {
     }
 
     @Test
-    public void listarNomesTest() throws Exception {
-        List<String> nomes = Arrays.asList("User 1", "User 2", "User 3");
-        when(serviceUser.listarNomes()).thenReturn(nomes);
-        mockMvc.perform(get("/users/listarNomes"))
-                .andExpect(status().isOk());
-    }
-
-    @Test
     public void findAllTest() throws Exception {
         mockMvc.perform(get("/users/findAll"))
                 .andExpect(status().isOk());
@@ -69,13 +61,6 @@ class UserControllerTest {
         mockMvc.perform(put("/users/edit")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(user)))
-                .andExpect(status().isOk());
-    }
-
-    @Test
-    public void deleteByIdTest() throws Exception {
-
-        mockMvc.perform(delete("/users/delete/1"))
                 .andExpect(status().isOk());
     }
 

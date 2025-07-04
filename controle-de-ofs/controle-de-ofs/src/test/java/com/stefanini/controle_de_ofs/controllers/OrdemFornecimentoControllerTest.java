@@ -63,7 +63,7 @@ class OrdemFornecimentoControllerTest {
 
     @Test
     public void listarTudoTest() throws Exception {
-        mockMvc.perform(get("/ordemFornecimento/listar"))
+        mockMvc.perform(get("/ordemFornecimento/listar/2"))
                 .andExpect(status().isOk());
     }
 
